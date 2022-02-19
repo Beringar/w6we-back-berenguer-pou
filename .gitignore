@@ -4,6 +4,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,macos,node
 .env
 .scannerwork
+.vscode
 ### macOS ###
 # General
 .DS_Store
