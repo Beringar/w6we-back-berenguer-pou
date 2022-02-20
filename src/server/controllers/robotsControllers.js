@@ -24,4 +24,19 @@ const getRobot = async (req, res, next) => {
   }
 };
 
-module.exports = { getAllRobots, getRobot };
+const deleteRobot = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const robot = await Robot.findByIdAndDelete(id);
+    if (robot) {
+      res.json({ id: robot.id });
+      return;
+    }
+    const error = new Error("Id not found!");
+    next(error);
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { getAllRobots, getRobot, deleteRobot };
