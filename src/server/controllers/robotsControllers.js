@@ -18,8 +18,11 @@ const getRobot = async (req, res, next) => {
       return;
     }
     const error = new Error("Robot not found!");
+    error.code = 404;
     next(error);
   } catch (error) {
+    error.message = "Invalid id!";
+    error.code = 400;
     next(error);
   }
 };
