@@ -1,4 +1,6 @@
 const express = require("express");
+const authToken = require("../middlewares/auth");
+
 const {
   getAllRobots,
   getRobot,
@@ -11,8 +13,8 @@ const router = express.Router();
 
 router.get("/", getAllRobots);
 router.get("/:id", getRobot);
-router.delete("/:id", deleteRobot);
-router.post("/create", createRobot);
-router.put("/update", updateRobot);
+router.delete("/:id", authToken, deleteRobot);
+router.post("/create", authToken, createRobot);
+router.put("/update", authToken, updateRobot);
 
 module.exports = router;
