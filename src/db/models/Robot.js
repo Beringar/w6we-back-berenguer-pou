@@ -11,7 +11,7 @@ const RobotSchema = new Schema(
       maxLength: [30, "Name has to be at most 30 characters long"],
       required: true,
     },
-    image: {
+    imageUrl: {
       type: SchemaTypes.Url,
       required: true,
     },
