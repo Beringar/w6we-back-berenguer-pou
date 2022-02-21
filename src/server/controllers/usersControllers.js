@@ -1,3 +1,5 @@
+const debug = require("debug")("robots:userControllers");
+const chalk = require("chalk");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../../db/models/User");
@@ -19,6 +21,11 @@ const userLogin = async (req, res, next) => {
       } else {
         const userData = { name: user.name, id: user.id };
         const token = jwt.sign(userData, process.env.JWT_SECRET);
+        debug(
+          chalk.cyanBright(
+            `Token ${token} generated for > user ${user.name} id:${user.id}`
+          )
+        );
         res.json({ token });
       }
     }
