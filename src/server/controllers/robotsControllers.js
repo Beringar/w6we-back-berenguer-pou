@@ -46,6 +46,7 @@ const createRobot = async (req, res, next) => {
   const robot = req.body;
   try {
     const newRobot = await Robot.create(robot);
+    res.code = 201;
     res.json(newRobot);
   } catch (error) {
     error.code = 400;
@@ -53,4 +54,29 @@ const createRobot = async (req, res, next) => {
   }
 };
 
-module.exports = { getAllRobots, getRobot, deleteRobot, createRobot };
+const updateRobot = async (req, res, next) => {
+  const robot = req.body;
+  try {
+    const response = await Robot.replaceOne({ _id: robot.id }, robot, {
+      runValidators: true,
+    });
+    if (response.modifiedCount === 0) {
+      const error = new Error("Update error");
+      error.code = 400;
+      next(error);
+      return;
+    }
+    res.json(robot);
+  } catch (error) {
+    error.code = 400;
+    next(error);
+  }
+};
+
+module.exports = {
+  getAllRobots,
+  getRobot,
+  deleteRobot,
+  createRobot,
+  updateRobot,
+};
