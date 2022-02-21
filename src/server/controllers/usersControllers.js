@@ -2,7 +2,7 @@ const debug = require("debug")("robots:server:userController");
 const User = require("../../db/models/User");
 
 const userLogin = async (req, res, next) => {
-  const { username, password } = req.body;
+  const { username } = req.body;
   try {
     const user = await User.findOne({ username });
     debug(user);

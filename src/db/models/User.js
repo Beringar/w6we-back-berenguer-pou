@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-underscore-dangle */
-const { model, Schema, SchemaTypes } = require("mongoose");
+const { model, Schema } = require("mongoose");
 
 const UserSchema = new Schema(
   {
