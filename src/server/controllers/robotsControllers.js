@@ -46,7 +46,7 @@ const createRobot = async (req, res, next) => {
   const robot = req.body;
   try {
     const newRobot = await Robot.create(robot);
-    res.code = 201;
+    res.status(201);
     res.json(newRobot);
   } catch (error) {
     error.code = 400;
