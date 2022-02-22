@@ -36,8 +36,11 @@ const deleteRobot = async (req, res, next) => {
       return;
     }
     const error = new Error("Id not found!");
+    error.code = 404;
     next(error);
   } catch (error) {
+    error.code = 400;
+    error.message = "Bad request";
     next(error);
   }
 };
@@ -46,7 +49,7 @@ const createRobot = async (req, res, next) => {
   const robot = req.body;
   try {
     const newRobot = await Robot.create(robot);
-    res.status = 201;
+    res.status(201);
     res.json(newRobot);
   } catch (error) {
     error.code = 400;
