@@ -36,6 +36,8 @@ describe("Given a usersRouter", () => {
         .send(newUser)
         .expect(200);
 
+      // TODO: guardar token
+
       expect(body).toHaveProperty("token");
     });
   });
