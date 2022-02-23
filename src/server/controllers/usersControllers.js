@@ -1,4 +1,3 @@
-require("dotenv").config();
 const debug = require("debug")("robots:userControllers");
 const chalk = require("chalk");
 const bcrypt = require("bcrypt");
