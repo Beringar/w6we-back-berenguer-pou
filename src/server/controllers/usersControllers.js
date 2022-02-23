@@ -20,10 +20,7 @@ const userLogin = async (req, res, next) => {
         next(error);
       } else {
         const userData = { name: user.name, id: user.id };
-        const token = jwt.sign(
-          userData,
-          "habiaunavezunafraseenunaenvllamadajwtsecret"
-        );
+        const token = jwt.sign(userData, process.env.JWT_SECRET);
         debug(
           chalk.cyanBright(
             `Token ${token} generated for > user ${user.name} id:${user.id}`
