@@ -26,7 +26,7 @@ const userLogin = async (req, res, next) => {
             `Token ${token} generated for > user ${user.name} id:${user.id}`
           )
         );
-        res.json({ token });
+        res.status(200).json({ token });
       }
     }
   } catch (error) {
